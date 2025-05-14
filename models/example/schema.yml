@@ -19,3 +19,22 @@ models:
             tests:
                 - unique
                 - not_null
+  
+    - name: meta_config
+      config:
+        materialized: table
+
+    - name: status_new_scd1
+      description: "SCD1 model for status_new"
+      meta:
+        source_table: raw.status_new
+        unique_key: patient_id
+        order_by: status_date desc
+        columns:
+          - patient_id
+          - status
+          - substatus
+          - status_date
+          - referral_date
+          - npi
+          - ndc

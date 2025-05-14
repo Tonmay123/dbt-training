@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw
+    tables:
+      - name: status_new
+      - name: meta_table
+      - name: status_scd2
