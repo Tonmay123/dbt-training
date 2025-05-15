@@ -1,40 +1,9 @@
 
 version: 2
 
-models:
-    - name: my_first_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
-
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
-  
-    - name: meta_config
-      config:
-        materialized: table
-
-    - name: status_new_scd1
-      description: "SCD1 model for status_new"
-      meta:
-        source_table: raw.status_new
-        unique_key: patient_id
-        order_by: status_date desc
-        columns:
-          - patient_id
-          - status
-          - substatus
-          - status_date
-          - referral_date
-          - npi
-          - ndc
+sources:
+  - name: raw
+    database: festive-nova-446203-c5       # optional, include if using multiple databases
+    schema: dbt_training
+    tables:
+      - name: meta_table
